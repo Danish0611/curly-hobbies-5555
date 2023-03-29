@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <select id="selectby">
+        <option value="">FilterBy Categories</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Iphone">Iphone</option>
+        <option value="One plus">One Plus</option>
+        <option value="Realme">Realme</option>
+        <option value="Google pixel">Google pixel</option>
+        <option value="Oppo">Oppo</option>
+        <option value="Vivo">Vivo</option>
+        <option value="Motorola">Motorola</option>
+    </select>
+    <div id="product-cont">
+
+
+    </div>
+</body>
+<script>
+
+   
+var fdata=[]
+
+fetch("https://database-beta.vercel.app/Mobile")
+.then((res)=>{
+    return res.json()
+})
+.then((data)=>{
+
+    // console.log(data)
+    // fdata.push(data)
+    fdata=data
+    displayData(fdata)
+    // console.log(fdata)
+})
+.catch((err)=>{
+    console.log(err)
+})
+
+
+let container=document.getElementById("product-cont")
+let filterby=document.getElementById("selectby")
+
+filterby.addEventListener("change",()=>{
+       
+    if(filterby.value===""){
+        displayData(fdata)
+    }
+    else{
+        let filtered=fdata.filter((ele)=>{
+            return ele.category===filterby.value
+        })
+        displayData(filtered)
+    }
+      })
+
+
+
+function displayData(data){
+    container.innerHTML=null; 
+
+   data.forEach((element)=>{
+
+let product=document.createElement("div")
+
+let brand=document.createElement("h4")
+brand.textContent=element.category;
+
+let image=document.createElement("img")
+image.setAttribute("src", element.image)
+
+let price=document.createElement("h5")
+price.textContent=element.price
+
+let productname=document.createElement("h2")
+productname.textContent=element.title;
+
+let discription=document.createElement("p")
+discription.textContent=element.desc
+
+let location=document.createElement("p")
+location.textContent=element.location;
+
+let viewbutton=document.createElement("button")
+viewbutton.textContent="View"
+viewbutton.style.border="1px solid skyblue"
+viewbutton.style.color="skyblue"
+viewbutton.style.backgroundColor="white"
+product.append(image, productname, brand, discription,price, location, viewbutton)
+container.append(product)
+
+
+   })
+
+    
+
+}
+
+
+</script>
+</html>
