@@ -1,0 +1,44 @@
+
+/* Write all necessery css here  */
+
+  form{
+    width: 350px;
+    height: 360px;
+    margin: auto auto;
+    padding: 30px;
+    background: rgb(235, 231, 35);
+    color: rgb(236, 76, 76);
+    margin-top: 170px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    font-size: 20px;
+  }
+  form > input{
+    display: block;
+    background: rgb(243, 241, 241);
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 9px;
+    width: 90%;
+    border-radius: 10px;
+    padding-left: 20px;
+  }
+  form > input:hover{
+    transform: scale(1.1);
+
+  }
+
+  #btn{
+    width: 50%;
+    margin: auto;
+    margin-top: 70px;
+    font-size: 18px;
+    color: rgb(245, 246, 240);
+    background: rgb(250, 55, 6);
+    border: none;
+    transition: all 0.4s;
+  }
+  #btn:hover{
+      transform: scale(1.1);
+  }
+  
