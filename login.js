@@ -27,12 +27,14 @@ form.addEventListener("submit",(e)=>{
   else if(form.submit.value=="SIGN UP"){
     let obj={
       number:form.number.value,
-      usernmae:form.username.value,
+      username:form.username.value,
       email:form.email.value,
       password:form.password.value,
     }
     users.push(obj)
     localStorage.setItem("users",JSON.stringify(users))
+    localStorage.setItem("login",obj.number)
+    window.location.href="HomePage/HomePage.html"
   }
   else if(form.submit.value=="SIGN IN"){
     for(let i=0;i<users.length;i++)
@@ -46,6 +48,8 @@ form.addEventListener("submit",(e)=>{
     if(form.password.value==obj.password)
     {
       alert("Login Successful")
+      localStorage.setItem("login",obj.number)
+    window.location.href="HomePage/HomePage.html"
     }
     else{
       alert("wrong password")
